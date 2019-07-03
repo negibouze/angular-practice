@@ -4,11 +4,19 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatSidenavModule
+  MatIconModule,
+  MatSidenavModule,
+  MatTreeModule
 } from '@angular/material';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule]
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatTreeModule
+  ]
 })
 export class SharedModule {}
