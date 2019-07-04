@@ -16,7 +16,7 @@ const subRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'main/user',
+    redirectTo: 'user',
     pathMatch: 'full'
   }
 ];

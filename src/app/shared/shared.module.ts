@@ -9,10 +9,15 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatExpansionModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatNativeDateModule,
+  MatPaginatorModule,
   MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
   MatTreeModule
 } from '@angular/material';
 
@@ -27,10 +32,15 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatExpansionModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatSidenavModule,
+    MatSortModule,
+    MatTableModule,
     MatTreeModule
   ]
 })
