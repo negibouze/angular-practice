@@ -1,8 +1,8 @@
 <div fxLayout="column" class="main-container">
   <app-header fxFlex="40px"></app-header>
-  <main role="main" fxFlex>
-    <mat-sidenav-container class="sidenav-container" role="navigation">
-      <mat-sidenav opened mode="side">
+  <div fxFlex>
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav opened mode="side" role="navigation">
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
           <!-- This is the tree node template for leaf nodes -->
           <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
@@ -41,8 +41,10 @@
           </mat-nested-tree-node>
         </mat-tree>
       </mat-sidenav>
-      <router-outlet></router-outlet>
+      <mat-sidenav-content role="main">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
     </mat-sidenav-container>
-  </main>
+  </div>
   <app-footer fxFlex="40px"></app-footer>
 </div>

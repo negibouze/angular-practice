@@ -1,13 +1,54 @@
-<div [fxLayout]="direction" (click)="toggleDirection()" class="login-container">
-  <div [fxFlex]="someValue">fxFlex="20"</div>
-  <div fxFlex="60">
-    <p>login works!</p>
-    <button mat-raised-button color="primary">Click me!</button>
-    <button mat-raised-button color="accent">Click me!</button>
-    <button mat-raised-button color="warn">Click me!</button>
-    <button mat-icon-button aria-label="Example icon-button with a home icon">
-      <mat-icon>home</mat-icon>
-    </button>
-  </div>
-  <div fxFlex>fxFlex</div>
+<div class="login-container">
+  <mat-card
+    fxLayout="column"
+    fxLayoutAlign="center"
+    class="login-form-container"
+  >
+    <form class="login-form">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field class="login-form-input">
+          <input
+            matInput
+            placeholder="Email"
+            autocomplete="email"
+            [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher"
+          />
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="login-form-input">
+          <input
+            matInput
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="login()">
+          ログイン
+        </button>
+      </div>
+    </form>
+  </mat-card>
 </div>
