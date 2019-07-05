@@ -4,8 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UserSearchComponent } from './contents/user-search/user-search.component';
 import { UserAddComponent } from './contents/user-add/user-add.component';
+import { ElementSearchComponent } from './contents/element-search/element-search.component';
 
 const subRoutes: Routes = [
+  {
+    path: 'element',
+    component: ElementSearchComponent
+  },
   {
     path: 'user',
     component: UserSearchComponent

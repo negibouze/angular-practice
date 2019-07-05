@@ -8,6 +8,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
 import { MainComponent } from './main/main.component';
 import { UserAddComponent } from './contents/user-add/user-add.component';
 import { UserSearchComponent } from './contents/user-search/user-search.component';
+import { ElementSearchComponent } from './contents/element-search/element-search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UserSearchComponent } from './contents/user-search/user-search.componen
     HeaderComponent,
     MainComponent,
     UserAddComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    ElementSearchComponent
   ],
   imports: [SharedModule, MainRoutingModule]
 })
