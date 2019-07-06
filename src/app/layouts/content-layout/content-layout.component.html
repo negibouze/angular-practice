@@ -1,0 +1,35 @@
+<div fxLayout="column" class="main-container">
+  <app-header fxFlex="40px"></app-header>
+  <div fxFlex>
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav opened mode="side" role="navigation" class="sidenav_menu">
+        <ul>
+          <li>
+            <a routerLink="/user/search" routerLinkActive="active">
+              User Search
+            </a>
+          </li>
+          <li>
+            <a routerLink="/user/add" routerLinkActive="active">
+              User Add
+            </a>
+          </li>
+          <li>
+            <a routerLink="/company/search" routerLinkActive="active">
+              Company Search
+            </a>
+          </li>
+          <li>
+            <a routerLink="/company/add" routerLinkActive="active">
+              Company Add
+            </a>
+          </li>
+        </ul>
+      </mat-sidenav>
+      <mat-sidenav-content role="main" class="sidenav_content">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  <app-footer fxFlex="40px"></app-footer>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ElementSearchComponent } from './element-search.component';
+import { ContentLayoutComponent } from './content-layout.component';
 
-describe('ElementSearchComponent', () => {
-  let component: ElementSearchComponent;
-  let fixture: ComponentFixture<ElementSearchComponent>;
+describe('ContentLayoutComponent', () => {
+  let component: ContentLayoutComponent;
+  let fixture: ComponentFixture<ContentLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElementSearchComponent ]
+      declarations: [ ContentLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ElementSearchComponent);
+    fixture = TestBed.createComponent(ContentLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
