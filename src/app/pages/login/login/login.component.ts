@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroupDirective,
   NgForm,
   Validators
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { AuthService } from '@app/services';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -28,19 +31,40 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.styl']
 })
 export class LoginComponent implements OnInit {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  });
 
   matcher = new MyErrorStateMatcher();
   hide = true;
+  nextUrl = null;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.queryParams.subscribe(
+      params => (this.nextUrl = params.returnUrl || 'user')
+    );
+  }
 
-  login() {
-    window.alert('login');
+  onSubmit() {
+    const vals = this.loginForm.value;
+    this.authService
+      .login({
+        username: vals.email,
+        password: vals.password
+      })
+      .subscribe(
+        _ => {
+          this.router.navigateByUrl(this.nextUrl);
+        },
+        error => console.log(`onError: ${error}`)
+      );
   }
 }

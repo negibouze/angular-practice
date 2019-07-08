@@ -4,27 +4,16 @@
     fxLayoutAlign="center"
     class="login-form-container"
   >
-    <form class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-form-field class="login-form-input">
           <input
             matInput
             placeholder="Email"
             autocomplete="email"
-            [formControl]="emailFormControl"
+            formControlName="email"
             [errorStateMatcher]="matcher"
           />
-          <mat-error
-            *ngIf="
-              emailFormControl.hasError('email') &&
-              !emailFormControl.hasError('required')
-            "
-          >
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="login-form-input">
@@ -32,6 +21,7 @@
             matInput
             placeholder="Enter your password"
             autocomplete="current-password"
+            formControlName="password"
             [type]="hide ? 'password' : 'text'"
           />
           <button
@@ -45,7 +35,7 @@
           </button>
         </mat-form-field>
 
-        <button mat-raised-button (click)="login()">
+        <button type="submit" [disabled]="!loginForm.valid" mat-raised-button>
           ログイン
         </button>
       </div>

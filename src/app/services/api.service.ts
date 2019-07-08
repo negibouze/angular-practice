@@ -10,34 +10,36 @@ const BASE_URL = env.serverUrl;
   providedIn: 'root'
 })
 export class ApiService {
-  private options = {
-    headers: new HttpHeaders().set('Content-Type', 'application/json')
-  };
+  private headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) {}
 
-  public get(
+  public get<T>(
     path: string,
     params: HttpParams = new HttpParams()
-  ): Observable<any> {
+  ): Observable<T> {
     return this.httpClient
-      .get(`${BASE_URL}${path}`, { params })
+      .get(`${BASE_URL}${path}`, { headers: this.headers, params })
       .pipe(catchError(this.formatErrors));
   }
 
-  public put(path: string, body: object = {}): Observable<any> {
+  public put<T>(path: string, body: object = {}): Observable<T> {
     return this.httpClient
-      .put(`${BASE_URL}${path}`, JSON.stringify(body), this.options)
+      .put(`${BASE_URL}${path}`, body, {
+        headers: this.headers
+      })
       .pipe(catchError(this.formatErrors));
   }
 
-  public post(path: string, body: object = {}): Observable<any> {
+  public post<T>(path: string, body: object = {}): Observable<T> {
     return this.httpClient
-      .post(`${BASE_URL}${path}`, JSON.stringify(body), this.options)
+      .post(`${BASE_URL}${path}`, body, {
+        headers: this.headers
+      })
       .pipe(catchError(this.formatErrors));
   }
 
-  public delete(path: string): Observable<any> {
+  public delete<T>(path: string): Observable<T> {
     return this.httpClient
       .delete(`${BASE_URL}${path}`)
       .pipe(catchError(this.formatErrors));

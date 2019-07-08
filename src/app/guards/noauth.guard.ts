@@ -7,13 +7,13 @@ import {
   Router
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { AuthService } from '@app/services';
 import { map, catchError } from 'rxjs/operators';
-import { AuthService } from '@app/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NoauthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -26,20 +26,15 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     return this.authService.isAuthenticated().pipe(
       map(v => {
-        if (v) {
+        if (!v) {
           return true;
         } else {
-          this.router.navigate(['login'], {
-            queryParams: {
-              returnUrl: state.url
-            }
-          });
+          this.router.navigate(['user']);
           return false;
         }
       }),
       catchError(err => {
-        this.router.navigate(['login']);
-        return of(false);
+        return of(true);
       })
     );
   }

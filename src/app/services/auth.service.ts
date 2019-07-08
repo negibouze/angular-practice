@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { throwError, Observable, of, observable } from 'rxjs';
+import { ApiService } from './api.service';
+import { map } from 'rxjs/operators';
 
-export class ILoginContext {
+export class LoginContext {
   username: string;
   password: string;
 }
@@ -10,20 +12,25 @@ export class ILoginContext {
   providedIn: 'root'
 })
 export class AuthService {
-  constructor() {}
+  constructor(private api: ApiService) {}
 
-  isAuthenticated(): boolean {
-    return true;
+  isAuthenticated(): Observable<boolean> {
+    return this.api.get<LoginContext[]>('authenticated').pipe(
+      map(v => {
+        return v && 1 <= v.length ? true : false;
+      })
+    );
   }
 
-  login(loginContext: ILoginContext): Observable<boolean> {
-    if (loginContext.username === '') {
-      return of(true);
-    }
-    return throwError('Invalid username or password');
+  login(loginContext: LoginContext): Observable<boolean> {
+    return this.api.post<LoginContext>('authenticated', loginContext).pipe(
+      map(v => {
+        return v ? true : false;
+      })
+    );
   }
 
   logout(): Observable<boolean> {
-    return of(false);
+    return this.api.delete<boolean>('authenticated');
   }
 }
