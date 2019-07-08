@@ -4,24 +4,9 @@
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav opened mode="side" role="navigation" class="sidenav_menu">
         <ul class="no-bullet">
-          <li>
-            <a routerLink="/user/search" routerLinkActive="active">
-              User Search
-            </a>
-          </li>
-          <li>
-            <a routerLink="/user/add" routerLinkActive="active">
-              User Add
-            </a>
-          </li>
-          <li>
-            <a routerLink="/company/search" routerLinkActive="active">
-              Company Search
-            </a>
-          </li>
-          <li>
-            <a routerLink="/company/add" routerLinkActive="active">
-              Company Add
+          <li *ngFor="let menu of menus">
+            <a [routerLink]="menu.link" routerLinkActive="active">
+              {{ menu.label }}
             </a>
           </li>
         </ul>

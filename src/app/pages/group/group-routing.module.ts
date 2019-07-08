@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CompanyAddComponent } from './company-add/company-add.component';
-import { CompanySearchComponent } from './company-search/company-search.component';
+import { GroupAddComponent } from './group-add/group-add.component';
+import { GroupSearchComponent } from './group-search/group-search.component';
 
 const routes: Routes = [
   {
@@ -12,11 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    component: CompanySearchComponent
+    component: GroupSearchComponent
   },
   {
     path: 'add',
-    component: CompanyAddComponent
+    component: GroupAddComponent
   }
 ];
 
@@ -24,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CompanyRoutingModule {}
+export class GroupRoutingModule {}
