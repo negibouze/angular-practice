@@ -7,38 +7,44 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <mat-grid-list
-        cols="2"
-        rowHeight="4:1"
-        class="user-search--expansion-panel-content"
+      <form
+        [formGroup]="userSearchForm"
+        (ngSubmit)="onSubmit()"
+        class="user-search-form"
       >
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Name" />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Age" />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Height" />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Weight" />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile> </mat-grid-tile>
-        <mat-grid-tile>
-          <button mat-raised-button (click)="search()">
-            検索
-          </button>
-        </mat-grid-tile>
-      </mat-grid-list>
+        <mat-grid-list
+          cols="2"
+          rowHeight="4:1"
+          class="user-search--expansion-panel-content"
+        >
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="name" />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Age" formControlName="age" />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Height" formControlName="height" />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Weight" formControlName="weight" />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile> </mat-grid-tile>
+          <mat-grid-tile>
+            <button type="submit" mat-raised-button>
+              検索
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
     </mat-expansion-panel>
   </div>
 

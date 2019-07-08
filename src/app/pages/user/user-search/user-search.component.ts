@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { UserService, User } from '@app/services/user.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-search',
@@ -8,6 +9,12 @@ import { UserService, User } from '@app/services/user.service';
   styleUrls: ['./user-search.component.styl']
 })
 export class UserSearchComponent implements OnInit {
+  userSearchForm = this.fb.group({
+    name: [''],
+    age: [''],
+    height: [''],
+    weight: ['']
+  });
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<User>();
 
@@ -26,7 +33,7 @@ export class UserSearchComponent implements OnInit {
     this.setDataSourceAttributes();
   }
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private fb: FormBuilder) {}
 
   ngOnInit() {}
 
@@ -40,7 +47,7 @@ export class UserSearchComponent implements OnInit {
     return 1 <= this.dataSource.data.length;
   }
 
-  search() {
+  onSubmit() {
     this.userService.getUsers().subscribe(users => {
       const user = users[0];
       this.displayedColumns = Object.keys(user);
