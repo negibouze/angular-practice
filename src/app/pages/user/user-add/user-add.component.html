@@ -1,1 +1,27 @@
-<p>user-add works!</p>
+<div fxLayout="column" class="user-add-container">
+  <form [formGroup]="userAddForm" (ngSubmit)="onSubmit()" class="user-add-form">
+    <mat-form-field class="search-form-item__input">
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="search-form-item__input">
+      <input matInput placeholder="Age" formControlName="age" />
+    </mat-form-field>
+    <mat-form-field class="search-form-item__input">
+      <input matInput placeholder="Height" formControlName="height" />
+    </mat-form-field>
+    <mat-form-field class="search-form-item__input">
+      <input matInput placeholder="Weight" formControlName="weight" />
+    </mat-form-field>
+    <button
+      type="button"
+      class="search-form-item__button"
+      (click)="userSearchForm.reset()"
+      mat-raised-button
+    >
+      条件クリア
+    </button>
+    <button type="submit" class="search-form-item__button" mat-raised-button>
+      検索
+    </button>
+  </form>
+</div>

@@ -9,6 +9,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatExpansionModule,
   MatGridListModule,
   MatIconModule,
@@ -21,8 +22,14 @@ import {
   MatTreeModule
 } from '@angular/material';
 
+import {
+  CustomIconButtonComponent,
+  OpenDialogIconButtonComponent
+} from './components';
+
 @NgModule({
-  imports: [],
+  declarations: [CustomIconButtonComponent, OpenDialogIconButtonComponent],
+  imports: [CommonModule, MatButtonModule, MatDialogModule, MatIconModule],
   exports: [
     CommonModule,
     FormsModule,
@@ -32,6 +39,7 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
@@ -41,7 +49,9 @@ import {
     MatSidenavModule,
     MatSortModule,
     MatTableModule,
-    MatTreeModule
+    MatTreeModule,
+    CustomIconButtonComponent,
+    OpenDialogIconButtonComponent
   ]
 })
 export class SharedModule {}

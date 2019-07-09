@@ -24,4 +24,8 @@ export class UserService {
     const url = `users/${id}`;
     return this.api.get<User>(url);
   }
+
+  addUser(user: User): Observable<User> {
+    return of(user);
+  }
 }

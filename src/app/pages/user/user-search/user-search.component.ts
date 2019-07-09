@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { UserService, User } from '@app/services/user.service';
 import { FormBuilder } from '@angular/forms';
+import { UserService, User } from '@app/services/user.service';
 
 @Component({
   selector: 'app-user-search',

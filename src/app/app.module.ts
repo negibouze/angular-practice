@@ -9,8 +9,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from '@app/shared/shared.module';
 
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
-import { FooterComponent } from '@app/components/footer/footer.component';
-import { HeaderComponent } from '@app/components/header/header.component';
+import { HeaderComponent, FooterComponent } from '@app/components';
 
 // for Development
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';

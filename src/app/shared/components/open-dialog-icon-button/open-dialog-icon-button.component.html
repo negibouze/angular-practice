@@ -1,0 +1,13 @@
+<app-custom-icon-button [iconSize]="iconSize" (click)="openDialog()">
+  <ng-content></ng-content>
+</app-custom-icon-button>
+<!-- Dialog template -->
+<ng-template #dialogTemplate>
+  <h2 matDialogTitle><ng-content select="[dialogTitle]"></ng-content></h2>
+  <mat-dialog-content
+    ><ng-content select="[dialogContent]"></ng-content>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose>OK</button>
+  </mat-dialog-actions>
+</ng-template>
