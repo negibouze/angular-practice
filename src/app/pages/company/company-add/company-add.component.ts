@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-company-add',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-add.component.styl']
 })
 export class CompanyAddComponent implements OnInit {
+  companyAddForm = this.fb.group({});
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  onSubmit() {}
 }

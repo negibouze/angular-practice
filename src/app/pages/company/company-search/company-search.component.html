@@ -1,1 +1,46 @@
-<p>company-search works!</p>
+<section fxLayout="column" class="company-search-container">
+  <app-content-header>
+    Company Search
+    <ng-container helpTitle>Company Search Help Title</ng-container>
+    <ng-container helpContent>Company Search Help Content</ng-container>
+  </app-content-header>
+  <div class="company-search--expansion-panel-container">
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="unselectable">
+          検索条件
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form
+        [formGroup]="companySearchForm"
+        (ngSubmit)="onSubmit()"
+        class="company-search-form"
+      >
+        <mat-grid-list
+          cols="2"
+          rowHeight="60"
+          class="company-search--expansion-panel-content"
+        >
+          <mat-grid-tile>
+            <button
+              type="button"
+              class="search-form-item__button"
+              (click)="companySearchForm.reset()"
+              mat-raised-button
+            >
+              条件クリア
+            </button>
+            <button
+              type="submit"
+              class="search-form-item__button"
+              mat-raised-button
+            >
+              検索
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </mat-expansion-panel>
+  </div>
+</section>

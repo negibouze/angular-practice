@@ -1,0 +1,15 @@
+<header class="content-header">
+  <h3><ng-content></ng-content></h3>
+  <app-open-dialog-icon-button
+    iconSize="28px"
+    class="content-header-button__help"
+  >
+    help_outline
+    <ng-container dialogTitle>
+      <ng-content select="[helpTitle]"></ng-content>
+    </ng-container>
+    <ng-container dialogContent>
+      <ng-content select="[helpContent]"></ng-content>
+    </ng-container>
+  </app-open-dialog-icon-button>
+</header>

@@ -1,1 +1,21 @@
-<p>group-add works!</p>
+<section fxLayout="column" class="group-add-container">
+  <app-content-header>
+    Group Add
+    <ng-container helpTitle>Group Add Help Title</ng-container>
+    <ng-container helpContent>Group Add Help Content</ng-container>
+  </app-content-header>
+  <form
+    [formGroup]="groupAddForm"
+    (ngSubmit)="onSubmit()"
+    class="group-add-form"
+  >
+    <button
+      type="submit"
+      color="primary"
+      class="add-form-item__button"
+      mat-raised-button
+    >
+      登録
+    </button>
+  </form>
+</section>

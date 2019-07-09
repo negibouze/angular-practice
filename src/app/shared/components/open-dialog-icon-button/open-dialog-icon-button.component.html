@@ -3,10 +3,11 @@
 </app-custom-icon-button>
 <!-- Dialog template -->
 <ng-template #dialogTemplate>
-  <h2 matDialogTitle><ng-content select="[dialogTitle]"></ng-content></h2>
-  <mat-dialog-content
-    ><ng-content select="[dialogContent]"></ng-content>
+  <h4 matDialogTitle><ng-content select="[dialogTitle]"></ng-content></h4>
+  <mat-dialog-content class="dialog-content">
+    <ng-content select="[dialogContent]"></ng-content>
   </mat-dialog-content>
+  <mat-divider></mat-divider>
   <mat-dialog-actions align="end">
     <button mat-button matDialogClose>OK</button>
   </mat-dialog-actions>

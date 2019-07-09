@@ -1,15 +1,9 @@
 <section fxLayout="column" class="user-search-container">
-  <header class="user-search-header">
-    <h3>User Search</h3>
-    <app-open-dialog-icon-button
-      iconSize="28px"
-      class="user-search-header-button__help"
-    >
-      help_outline
-      <ng-container dialogTitle>Dialog Title</ng-container>
-      <ng-container dialogContent>Dialog Content</ng-container>
-    </app-open-dialog-icon-button>
-  </header>
+  <app-content-header>
+    User Search
+    <ng-container helpTitle>User Search Help Title</ng-container>
+    <ng-container helpContent>User Search Help Content</ng-container>
+  </app-content-header>
   <div class="user-search--expansion-panel-container">
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>

@@ -1,1 +1,21 @@
-<p>company-add works!</p>
+<section fxLayout="column" class="company-add-container">
+  <app-content-header>
+    Company Add
+    <ng-container helpTitle>Company Add Help Title</ng-container>
+    <ng-container helpContent>Company Add Help Content</ng-container>
+  </app-content-header>
+  <form
+    [formGroup]="companyAddForm"
+    (ngSubmit)="onSubmit()"
+    class="company-add-form"
+  >
+    <button
+      type="submit"
+      color="primary"
+      class="add-form-item__button"
+      mat-raised-button
+    >
+      登録
+    </button>
+  </form>
+</section>

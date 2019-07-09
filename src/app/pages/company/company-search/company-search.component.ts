@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-company-search',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-search.component.styl']
 })
 export class CompanySearchComponent implements OnInit {
+  companySearchForm = this.fb.group({});
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  onSubmit() {}
 }
