@@ -14,7 +14,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
 
 // for Development
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
 
 @NgModule({
   declarations: [

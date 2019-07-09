@@ -2,8 +2,8 @@
   <div class="user-search--expansion-panel-container">
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          This is the expansion title
+        <mat-panel-title class="unselectable">
+          検索条件
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -14,32 +14,44 @@
       >
         <mat-grid-list
           cols="2"
-          rowHeight="4:1"
+          rowHeight="60"
           class="user-search--expansion-panel-content"
         >
           <mat-grid-tile>
-            <mat-form-field>
+            <mat-form-field class="search-form-item__input">
               <input matInput placeholder="Name" formControlName="name" />
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
-            <mat-form-field>
+            <mat-form-field class="search-form-item__input">
               <input matInput placeholder="Age" formControlName="age" />
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
-            <mat-form-field>
+            <mat-form-field class="search-form-item__input">
               <input matInput placeholder="Height" formControlName="height" />
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
-            <mat-form-field>
+            <mat-form-field class="search-form-item__input">
               <input matInput placeholder="Weight" formControlName="weight" />
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile> </mat-grid-tile>
           <mat-grid-tile>
-            <button type="submit" mat-raised-button>
+            <button
+              type="button"
+              class="search-form-item__button"
+              (click)="userSearchForm.reset()"
+              mat-raised-button
+            >
+              条件クリア
+            </button>
+            <button
+              type="submit"
+              class="search-form-item__button"
+              mat-raised-button
+            >
               検索
             </button>
           </mat-grid-tile>

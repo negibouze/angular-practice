@@ -2,9 +2,9 @@
   <app-header fxFlex="40px"></app-header>
   <div fxFlex>
     <mat-sidenav-container class="sidenav-container">
-      <mat-sidenav opened mode="side" role="navigation" class="sidenav_menu">
-        <ul class="no-bullet">
-          <li *ngFor="let menu of menus">
+      <mat-sidenav opened mode="side" role="navigation" class="sidenav">
+        <ul class="sidenav-menu no-bullet">
+          <li *ngFor="let menu of menus" class="sidenav-menu-item">
             <a [routerLink]="menu.link" routerLinkActive="active">
               {{ menu.label }}
             </a>
