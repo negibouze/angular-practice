@@ -4,26 +4,44 @@
     <ng-container helpTitle>User Add Help Title</ng-container>
     <ng-container helpContent>User Add Help Content</ng-container>
   </app-content-header>
-  <form [formGroup]="userAddForm" (ngSubmit)="onSubmit()" class="user-add-form">
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Name" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Age" formControlName="age" />
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Height" formControlName="height" />
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Weight" formControlName="weight" />
-    </mat-form-field>
-    <button
-      type="submit"
-      color="primary"
-      class="add-form-item__button"
-      mat-raised-button
+  <div class="add-form-container">
+    <form
+      [formGroup]="userAddForm"
+      (ngSubmit)="onSubmit()"
+      class="user-add-form"
     >
-      登録
-    </button>
-  </form>
+      <mat-form-field class="add-form-item__input">
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="add-form-item__input">
+        <mat-label>Age</mat-label>
+        <mat-select
+          [(ngModel)]="selectedValue"
+          name="age"
+          formControlName="age"
+        >
+          <mat-option *ngFor="let age of ages" [value]="age.value">
+            {{ age.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="add-form-item__input">
+        <input matInput placeholder="Height" formControlName="height" />
+      </mat-form-field>
+      <mat-form-field class="add-form-item__input">
+        <input matInput placeholder="Weight" formControlName="weight" />
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="center center" class="add-form-footer">
+        <button
+          type="submit"
+          color="primary"
+          class="add-form-item__button"
+          [disabled]="!userAddForm.valid"
+          mat-raised-button
+        >
+          登録
+        </button>
+      </div>
+    </form>
+  </div>
 </section>

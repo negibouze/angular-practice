@@ -36,6 +36,15 @@ export class UserAddComponent implements OnInit {
     height: [''],
     weight: ['']
   });
+  selectedValue: string;
+  selectedCar: string;
+
+  ages = Array.from(Array(30).keys())
+    .map(v => {
+      const val = v + 20;
+      return { value: val, label: val };
+    })
+    .reduce((acc, v) => acc.concat(v), []);
 
   matcher = new UserAddErrorStateMatcher();
 
