@@ -1,0 +1,16 @@
+<div class="add-form-container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="add-form">
+    <ng-content></ng-content>
+    <div fxLayout="row" fxLayoutAlign="center center" class="add-form-footer">
+      <button
+        type="submit"
+        color="primary"
+        class="add-form-item__button"
+        [disabled]="!formGroup.valid"
+        mat-raised-button
+      >
+        登録
+      </button>
+    </div>
+  </form>
+</div>

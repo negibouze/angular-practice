@@ -4,19 +4,9 @@
     <ng-container helpTitle>Group Add Help Title</ng-container>
     <ng-container helpContent>Group Add Help Content</ng-container>
   </app-content-header>
-  <form
-    [formGroup]="groupAddForm"
-    (ngSubmit)="onSubmit()"
-    class="group-add-form"
+  <app-content-add-form
+    [formGroup]="addForm"
+    (submitEvent)="handleSubmit($event)"
   >
-    <button
-      type="submit"
-      color="primary"
-      class="add-form-item__button"
-      [disabled]="!groupAddForm.valid"
-      mat-raised-button
-    >
-      登録
-    </button>
-  </form>
+  </app-content-add-form>
 </section>

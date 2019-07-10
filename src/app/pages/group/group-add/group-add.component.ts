@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-group-add',
@@ -7,11 +7,11 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./group-add.component.styl']
 })
 export class GroupAddComponent implements OnInit {
-  groupAddForm = this.fb.group({});
+  addForm = this.fb.group({});
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  onSubmit() {}
+  handleSubmit(fb: FormGroup) {}
 }

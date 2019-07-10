@@ -4,7 +4,8 @@ import {
   FormControl,
   FormGroupDirective,
   NgForm,
-  Validators
+  Validators,
+  FormGroup
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { UserService, User } from '@app/services/user.service';
@@ -30,7 +31,7 @@ export class UserAddErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./user-add.component.styl']
 })
 export class UserAddComponent implements OnInit {
-  userAddForm = this.fb.group({
+  addForm = this.fb.group({
     name: ['', [Validators.required]],
     age: [''],
     height: [''],
@@ -52,8 +53,8 @@ export class UserAddComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
-    const vals: User = this.userAddForm.value;
+  handleSubmit(fb: FormGroup) {
+    const vals: User = this.addForm.value;
     this.userService.addUser(vals).subscribe();
   }
 }

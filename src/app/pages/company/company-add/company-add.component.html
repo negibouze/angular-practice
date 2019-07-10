@@ -4,19 +4,9 @@
     <ng-container helpTitle>Company Add Help Title</ng-container>
     <ng-container helpContent>Company Add Help Content</ng-container>
   </app-content-header>
-  <form
-    [formGroup]="companyAddForm"
-    (ngSubmit)="onSubmit()"
-    class="company-add-form"
+  <app-content-add-form
+    [formGroup]="addForm"
+    (submitEvent)="handleSubmit($event)"
   >
-    <button
-      type="submit"
-      color="primary"
-      class="add-form-item__button"
-      [disabled]="!companyAddForm.valid"
-      mat-raised-button
-    >
-      登録
-    </button>
-  </form>
+  </app-content-add-form>
 </section>

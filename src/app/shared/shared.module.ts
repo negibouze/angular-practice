@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 
 import {
+  ContentAddFormComponent,
   ContentHeaderComponent,
   ContentSearchFormComponent,
   CustomIconButtonComponent,
@@ -33,6 +34,7 @@ import {
 
 @NgModule({
   declarations: [
+    ContentAddFormComponent,
     ContentHeaderComponent,
     ContentSearchFormComponent,
     CustomIconButtonComponent,
@@ -42,6 +44,7 @@ import {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
@@ -72,6 +75,7 @@ import {
     MatSortModule,
     MatTableModule,
     MatTreeModule,
+    ContentAddFormComponent,
     ContentHeaderComponent,
     ContentSearchFormComponent,
     CustomIconButtonComponent,
