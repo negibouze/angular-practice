@@ -25,6 +25,7 @@ import {
 
 import {
   ContentHeaderComponent,
+  ContentSearchFormComponent,
   CustomIconButtonComponent,
   OpenDialogIconButtonComponent
 } from './components';
@@ -32,15 +33,21 @@ import {
 @NgModule({
   declarations: [
     ContentHeaderComponent,
+    ContentSearchFormComponent,
     CustomIconButtonComponent,
     OpenDialogIconButtonComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
-    MatIconModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule
   ],
   exports: [
     CommonModule,
@@ -64,6 +71,7 @@ import {
     MatTableModule,
     MatTreeModule,
     ContentHeaderComponent,
+    ContentSearchFormComponent,
     CustomIconButtonComponent,
     OpenDialogIconButtonComponent
   ]

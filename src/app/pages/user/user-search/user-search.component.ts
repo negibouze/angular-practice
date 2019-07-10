@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService, User } from '@app/services/user.service';
 
 @Component({
@@ -9,12 +9,21 @@ import { UserService, User } from '@app/services/user.service';
   styleUrls: ['./user-search.component.styl']
 })
 export class UserSearchComponent implements OnInit {
-  userSearchForm = this.fb.group({
-    name: [''],
-    age: [''],
-    height: [''],
-    weight: ['']
-  });
+  formItems = [
+    { key: 'name', label: 'Name', controlConfig: [''] },
+    { key: 'age', label: 'Age', controlConfig: [''] },
+    { key: 'height', label: 'Height', controlConfig: [''] },
+    { key: 'weight', label: 'Weight', controlConfig: [''] }
+  ];
+  searchForm = this.fb.group(
+    this.formItems
+      .map(v => {
+        return { [v.key]: v.controlConfig };
+      })
+      .reduce((acc, v) => {
+        return { ...acc, ...v };
+      }, {})
+  );
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<User>();
 
@@ -47,7 +56,7 @@ export class UserSearchComponent implements OnInit {
     return 1 <= this.dataSource.data.length;
   }
 
-  onSubmit() {
+  handleSubmit(fb: FormGroup) {
     this.userService.getUsers().subscribe(users => {
       const user = users[0];
       this.displayedColumns = Object.keys(user);

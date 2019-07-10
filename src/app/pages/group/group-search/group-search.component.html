@@ -4,43 +4,20 @@
     <ng-container helpTitle>Group Search Help Title</ng-container>
     <ng-container helpContent>Group Search Help Content</ng-container>
   </app-content-header>
-  <div class="group-search--expansion-panel-container">
-    <mat-expansion-panel expanded>
-      <mat-expansion-panel-header>
-        <mat-panel-title class="unselectable">
-          検索条件
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <form
-        [formGroup]="groupSearchForm"
-        (ngSubmit)="onSubmit()"
-        class="group-search-form"
-      >
-        <mat-grid-list
-          cols="2"
-          rowHeight="60"
-          class="group-search--expansion-panel-content"
-        >
-          <mat-grid-tile>
-            <button
-              type="button"
-              class="search-form-item__button"
-              (click)="groupSearchForm.reset()"
-              mat-raised-button
-            >
-              条件クリア
-            </button>
-            <button
-              type="submit"
-              class="search-form-item__button"
-              mat-raised-button
-            >
-              検索
-            </button>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </form>
-    </mat-expansion-panel>
-  </div>
+  <app-content-search-form
+    [formGroup]="searchForm"
+    (submitEvent)="handleSubmit($event)"
+  >
+    <mat-grid-list cols="2" rowHeight="60">
+      <mat-grid-tile *ngFor="let item of formItems">
+        <mat-form-field class="group-search-form-item__input">
+          <input
+            matInput
+            [placeholder]="item.label"
+            [formControlName]="item.key"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </app-content-search-form>
 </section>

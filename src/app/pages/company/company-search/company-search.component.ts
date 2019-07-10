@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-company-search',
@@ -7,11 +7,24 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./company-search.component.styl']
 })
 export class CompanySearchComponent implements OnInit {
-  companySearchForm = this.fb.group({});
+  formItems = [
+    { key: 'name', label: 'Name', controlConfig: [''] },
+    { key: 'address', label: 'Address', controlConfig: [''] },
+    { key: 'tel', label: 'Tel', controlConfig: [''] }
+  ];
+  searchForm = this.fb.group(
+    this.formItems
+      .map(v => {
+        return { [v.key]: v.controlConfig };
+      })
+      .reduce((acc, v) => {
+        return { ...acc, ...v };
+      }, {})
+  );
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  onSubmit() {}
+  handleSubmit(fb: FormGroup) {}
 }
