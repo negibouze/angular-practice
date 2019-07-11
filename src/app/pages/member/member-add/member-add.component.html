@@ -1,0 +1,29 @@
+<section fxLayout="column" class="section-root-container">
+  <app-content-header>
+    Member Add
+    <ng-container helpTitle>Member Add Help Title</ng-container>
+    <ng-container helpContent>Member Add Help Content</ng-container>
+  </app-content-header>
+  <app-content-add-form
+    [formGroup]="addForm"
+    (submitEvent)="handleSubmit($event)"
+  >
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <mat-label>Age</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="age" formControlName="age">
+        <mat-option *ngFor="let age of ages" [value]="age.value">
+          {{ age.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Height" formControlName="height" />
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Weight" formControlName="weight" />
+    </mat-form-field>
+  </app-content-add-form>
+</section>

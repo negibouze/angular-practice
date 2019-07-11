@@ -31,21 +31,12 @@ export class UserAddErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./user-add.component.styl']
 })
 export class UserAddComponent implements OnInit {
-  addForm = this.fb.group({
-    name: ['', [Validators.required]],
-    age: [''],
-    height: [''],
-    weight: ['']
+  formGroup = this.fb.group({
+    name: [''],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]]
   });
-  selectedValue: string;
-  selectedCar: string;
-
-  ages = Array.from(Array(30).keys())
-    .map(v => {
-      const val = v + 20;
-      return { value: val, label: val };
-    })
-    .reduce((acc, v) => acc.concat(v), []);
+  hide = true;
 
   matcher = new UserAddErrorStateMatcher();
 
@@ -54,7 +45,12 @@ export class UserAddComponent implements OnInit {
   ngOnInit() {}
 
   handleSubmit(fb: FormGroup) {
-    const vals: User = this.addForm.value;
-    this.userService.addUser(vals).subscribe();
+    const vals: User = this.formGroup.value;
+    this.userService
+      .addUser(vals)
+      .subscribe(
+        _ => this.formGroup.reset(),
+        error => console.log(`onError: ${error}`)
+      );
   }
 }

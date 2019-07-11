@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
         password: vals.password
       })
       .subscribe(
-        _ => {
-          this.router.navigateByUrl(this.nextUrl);
-        },
+        _ => this.router.navigateByUrl(this.nextUrl),
         error => console.log(`onError: ${error}`)
       );
   }

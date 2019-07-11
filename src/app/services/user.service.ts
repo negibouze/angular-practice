@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
+import { tap } from 'rxjs/operators';
 
 export interface User {
   id: number;
-  name: string;
-  age: number;
-  height: number;
-  weight: number;
+  name?: string;
+  email: string;
+  password: string;
 }
 
 @Injectable({
@@ -26,6 +26,6 @@ export class UserService {
   }
 
   addUser(user: User): Observable<User> {
-    return of(user);
+    return this.api.post<User>('users', user);
   }
 }

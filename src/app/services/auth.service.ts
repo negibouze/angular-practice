@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { throwError, Observable, of, observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
+import { User } from './user.service';
+
+// for development
+import { LocalStorageService } from './development';
 
 export class LoginContext {
   username: string;
@@ -12,25 +16,38 @@ export class LoginContext {
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    private localStorageService: LocalStorageService
+  ) {}
 
   isAuthenticated(): Observable<boolean> {
-    return this.api.get<LoginContext[]>('authenticated').pipe(
-      map(v => {
-        return v && 1 <= v.length ? true : false;
-      })
-    );
+    const items = this.localStorageService.fetchItems('authenticated');
+    return of(items && 1 <= items.length ? true : false);
   }
 
   login(loginContext: LoginContext): Observable<boolean> {
-    return this.api.post<LoginContext>('authenticated', loginContext).pipe(
-      map(v => {
-        return v ? true : false;
+    return this.api.get<User[]>('users').pipe(
+      map(users => {
+        const exists = users.some(
+          v =>
+            v.email === loginContext.username &&
+            v.password === loginContext.password
+        );
+        if (exists) {
+          this.localStorageService.storeItem('authenticated', {
+            ...{ id: Math.floor(Math.random() * Math.floor(2)) },
+            ...loginContext
+          });
+          return true;
+        }
+        throw new Error('Invalid User');
       })
     );
   }
 
   logout(): Observable<boolean> {
-    return this.api.delete<boolean>('authenticated');
+    this.localStorageService.deleteItems('authenticated');
+    return of(true);
   }
 }

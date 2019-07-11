@@ -1,4 +1,4 @@
-<section fxLayout="column" class="group-search-container">
+<section fxLayout="column" class="section-root-container">
   <app-content-header>
     Group Search
     <ng-container helpTitle>Group Search Help Title</ng-container>
@@ -10,7 +10,7 @@
   >
     <mat-grid-list cols="2" rowHeight="60">
       <mat-grid-tile *ngFor="let item of formItems">
-        <mat-form-field class="group-search-form-item__input">
+        <mat-form-field class="search-form-item__input">
           <input
             matInput
             [placeholder]="item.label"

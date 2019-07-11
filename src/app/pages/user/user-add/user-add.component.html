@@ -1,29 +1,43 @@
-<section fxLayout="column" class="user-add-container">
+<section fxLayout="column" class="section-root-container">
   <app-content-header>
     User Add
     <ng-container helpTitle>User Add Help Title</ng-container>
     <ng-container helpContent>User Add Help Content</ng-container>
   </app-content-header>
   <app-content-add-form
-    [formGroup]="addForm"
+    [formGroup]="formGroup"
     (submitEvent)="handleSubmit($event)"
   >
     <mat-form-field class="add-form-item__input">
+      <input
+        matInput
+        placeholder="Email"
+        autocomplete="email"
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="add-form-item__input">
+      <input
+        matInput
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        formControlName="password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
       <input matInput placeholder="Name" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <mat-label>Age</mat-label>
-      <mat-select [(ngModel)]="selectedValue" name="age" formControlName="age">
-        <mat-option *ngFor="let age of ages" [value]="age.value">
-          {{ age.label }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Height" formControlName="height" />
-    </mat-form-field>
-    <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Weight" formControlName="weight" />
     </mat-form-field>
   </app-content-add-form>
 </section>

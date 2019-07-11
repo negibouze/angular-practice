@@ -1,17 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService, User } from '@app/services/user.service';
+import { MemberService, Member } from '@app/services/member.service';
 
 @Component({
-  selector: 'app-user-search',
-  templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.styl']
+  selector: 'app-member-search',
+  templateUrl: './member-search.component.html',
+  styleUrls: ['./member-search.component.styl']
 })
-export class UserSearchComponent implements OnInit {
+export class MemberSearchComponent implements OnInit {
   formItems = [
     { key: 'name', label: 'Name', controlConfig: [''] },
-    { key: 'mail', label: 'Mail', controlConfig: [''] }
+    { key: 'age', label: 'Age', controlConfig: [''] },
+    { key: 'height', label: 'Height', controlConfig: [''] },
+    { key: 'weight', label: 'Weight', controlConfig: [''] }
   ];
   searchForm = this.fb.group(
     this.formItems
@@ -23,7 +25,7 @@ export class UserSearchComponent implements OnInit {
       }, {})
   );
   displayedColumns: string[] = [];
-  dataSource = new MatTableDataSource<User>();
+  dataSource = new MatTableDataSource<Member>();
 
   private paginator: MatPaginator;
   private sort: MatSort;
@@ -40,7 +42,7 @@ export class UserSearchComponent implements OnInit {
     this.setDataSourceAttributes();
   }
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(private memberService: MemberService, private fb: FormBuilder) {}
 
   ngOnInit() {}
 
@@ -55,10 +57,10 @@ export class UserSearchComponent implements OnInit {
   }
 
   handleSubmit(fb: FormGroup) {
-    this.userService.getUsers().subscribe(users => {
-      const user = users[0];
-      this.displayedColumns = Object.keys(user);
-      this.dataSource.data = users;
+    this.memberService.getMembers().subscribe(members => {
+      const member = members[0];
+      this.displayedColumns = Object.keys(member);
+      this.dataSource.data = members;
     });
   }
 }

@@ -33,7 +33,7 @@ export class ApiService {
 
   public post<T>(path: string, body: object = {}): Observable<T> {
     return this.httpClient
-      .post(`${BASE_URL}${path}`, body, {
+      .post<T>(`${BASE_URL}${path}`, body, {
         headers: this.headers
       })
       .pipe(catchError(this.formatErrors));

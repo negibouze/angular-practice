@@ -1,4 +1,4 @@
-<section fxLayout="column" class="company-search-container">
+<section fxLayout="column" class="section-root-container">
   <app-content-header>
     Company Search
     <ng-container helpTitle>Company Search Help Title</ng-container>
@@ -10,7 +10,7 @@
   >
     <mat-grid-list cols="2" rowHeight="60">
       <mat-grid-tile *ngFor="let item of formItems">
-        <mat-form-field class="company-search-form-item__input">
+        <mat-form-field class="search-form-item__input">
           <input
             matInput
             [placeholder]="item.label"

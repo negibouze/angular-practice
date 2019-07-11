@@ -13,7 +13,7 @@ import { HeaderComponent, FooterComponent } from '@app/components';
 
 // for Development
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
+import { InMemoryDataService } from './services/development';
 
 @NgModule({
   declarations: [
