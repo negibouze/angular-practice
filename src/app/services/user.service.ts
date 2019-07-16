@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
-import { tap } from 'rxjs/operators';
 
 export interface User {
   id: number;

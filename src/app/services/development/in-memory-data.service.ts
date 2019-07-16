@@ -1,6 +1,9 @@
 import { InMemoryDbService, ResponseOptions } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
-import userData from './user-data';
+import companies from './company-data';
+import groups from './group-data';
+import members from './member-data';
+import users from './user-data';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,10 @@ import userData from './user-data';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     return {
-      users: userData
+      companies,
+      groups,
+      members,
+      users
     };
   }
 

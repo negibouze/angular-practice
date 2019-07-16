@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GroupService, Group } from '@app/services/group.service';
 
 @Component({
   selector: 'app-group-search',
@@ -22,9 +23,18 @@ export class GroupSearchComponent implements OnInit {
       }, {})
   );
 
-  constructor(private fb: FormBuilder) {}
+  displayedColumns: string[];
+  data: Group[];
+
+  constructor(private groupService: GroupService, private fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  handleSubmit(fb: FormGroup) {}
+  handleSubmit(fb: FormGroup) {
+    this.groupService.getGroups().subscribe(groups => {
+      const group = groups[0];
+      this.displayedColumns = Object.keys(group);
+      this.data = groups;
+    });
+  }
 }

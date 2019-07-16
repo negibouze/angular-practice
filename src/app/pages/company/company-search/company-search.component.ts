@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CompanyService, Company } from '@app/services/company.service';
 
 @Component({
   selector: 'app-company-search',
@@ -22,9 +23,21 @@ export class CompanySearchComponent implements OnInit {
       }, {})
   );
 
-  constructor(private fb: FormBuilder) {}
+  displayedColumns: string[];
+  data: Company[];
+
+  constructor(
+    private companyService: CompanyService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {}
 
-  handleSubmit(fb: FormGroup) {}
+  handleSubmit(fb: FormGroup) {
+    this.companyService.getCompanies().subscribe(companies => {
+      const company = companies[0];
+      this.displayedColumns = Object.keys(company);
+      this.data = companies;
+    });
+  }
 }

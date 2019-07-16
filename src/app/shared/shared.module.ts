@@ -20,14 +20,14 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatSortModule,
-  MatTableModule,
-  MatTreeModule
+  MatTableModule
 } from '@angular/material';
 
 import {
   ContentAddFormComponent,
   ContentHeaderComponent,
   ContentSearchFormComponent,
+  ContentSearchResultTableComponent,
   CustomIconButtonComponent,
   OpenDialogIconButtonComponent
 } from './components';
@@ -37,21 +37,25 @@ import {
     ContentAddFormComponent,
     ContentHeaderComponent,
     ContentSearchFormComponent,
+    ContentSearchResultTableComponent,
     CustomIconButtonComponent,
     OpenDialogIconButtonComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     FlexLayoutModule,
+    FormsModule,
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -74,10 +78,10 @@ import {
     MatSidenavModule,
     MatSortModule,
     MatTableModule,
-    MatTreeModule,
     ContentAddFormComponent,
     ContentHeaderComponent,
     ContentSearchFormComponent,
+    ContentSearchResultTableComponent,
     CustomIconButtonComponent,
     OpenDialogIconButtonComponent
   ]

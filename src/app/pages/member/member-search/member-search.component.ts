@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MemberService, Member } from '@app/services/member.service';
 
@@ -24,43 +23,19 @@ export class MemberSearchComponent implements OnInit {
         return { ...acc, ...v };
       }, {})
   );
-  displayedColumns: string[] = [];
-  dataSource = new MatTableDataSource<Member>();
 
-  private paginator: MatPaginator;
-  private sort: MatSort;
-
-  @ViewChild(MatPaginator, { static: false }) set matPaginator(
-    mp: MatPaginator
-  ) {
-    this.paginator = mp;
-    this.setDataSourceAttributes();
-  }
-
-  @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.setDataSourceAttributes();
-  }
+  displayedColumns: string[];
+  data: Member[];
 
   constructor(private memberService: MemberService, private fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  setDataSourceAttributes() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  hasData(): boolean {
-    if (!this.dataSource || !this.dataSource.data) return false;
-    return 1 <= this.dataSource.data.length;
-  }
-
   handleSubmit(fb: FormGroup) {
     this.memberService.getMembers().subscribe(members => {
       const member = members[0];
       this.displayedColumns = Object.keys(member);
-      this.dataSource.data = members;
+      this.data = members;
     });
   }
 }
