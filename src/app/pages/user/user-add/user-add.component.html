@@ -4,10 +4,7 @@
     <ng-container helpTitle>User Add Help Title</ng-container>
     <ng-container helpContent>User Add Help Content</ng-container>
   </app-content-header>
-  <app-content-add-form
-    [formGroup]="formGroup"
-    (submitEvent)="handleSubmit($event)"
-  >
+  <app-content-add-form [formGroup]="formGroup" (submitEvent)="handleSubmit()">
     <mat-form-field class="add-form-item__input">
       <input
         matInput

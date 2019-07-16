@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:stats": "ng b --prod=true --statsJson=true",
+    "run:analyzer": "webpack-bundle-analyzer dist/$npm_package_name/stats-es2015.json -p 5000",
+    "analyze": "run-s build:stats run:analyzer"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~8.1.1",
     "@angular/router": "~8.1.1",
     "hammerjs": "^2.0.8",
+    "moment": "^2.24.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -46,12 +50,15 @@
     "karma-coverage-istanbul-reporter": "~2.0.5",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "moment-locales-webpack-plugin": "^1.0.7",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "protractor": "~5.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "webpack-bundle-analyzer": "^3.3.2"
   },
   "husky": {
     "hooks": {

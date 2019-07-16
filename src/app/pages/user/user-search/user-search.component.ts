@@ -25,7 +25,7 @@ export class UserSearchComponent implements OnInit {
   displayedColumns: string[];
   data: User[];
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {}
 

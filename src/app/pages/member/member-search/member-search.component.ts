@@ -27,7 +27,7 @@ export class MemberSearchComponent implements OnInit {
   displayedColumns: string[];
   data: Member[];
 
-  constructor(private memberService: MemberService, private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private memberService: MemberService) {}
 
   ngOnInit() {}
 

@@ -11,7 +11,8 @@ export class CompanySearchComponent implements OnInit {
   formItems = [
     { key: 'name', label: 'Name', controlConfig: [''] },
     { key: 'address', label: 'Address', controlConfig: [''] },
-    { key: 'tel', label: 'Tel', controlConfig: [''] }
+    { key: 'tel', label: 'Tel', controlConfig: [''] },
+    { key: 'applicationDate', label: 'ApplicationDate', controlConfig: [''] }
   ];
   searchForm = this.fb.group(
     this.formItems
@@ -27,8 +28,8 @@ export class CompanySearchComponent implements OnInit {
   data: Company[];
 
   constructor(
-    private companyService: CompanyService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private companyService: CompanyService
   ) {}
 
   ngOnInit() {}

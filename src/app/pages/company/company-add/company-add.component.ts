@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Company, CompanyService } from '@app/services/company.service';
 
 @Component({
   selector: 'app-company-add',
@@ -7,11 +8,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./company-add.component.styl']
 })
 export class CompanyAddComponent implements OnInit {
-  addForm = this.fb.group({});
+  addForm = this.fb.group({
+    name: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    tel: ['', [Validators.required]],
+    applicationDate: ['', [Validators.required]]
+  });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private companyService: CompanyService
+  ) {}
 
   ngOnInit() {}
 
-  handleSubmit(fb: FormGroup) {}
+  handleSubmit() {
+    const vals: Company = this.addForm.value;
+    this.companyService.addCompany(vals).subscribe();
+  }
 }

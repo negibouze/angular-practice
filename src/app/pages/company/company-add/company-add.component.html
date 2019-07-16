@@ -4,9 +4,26 @@
     <ng-container helpTitle>Company Add Help Title</ng-container>
     <ng-container helpContent>Company Add Help Content</ng-container>
   </app-content-header>
-  <app-content-add-form
-    [formGroup]="addForm"
-    (submitEvent)="handleSubmit($event)"
-  >
+  <app-content-add-form [formGroup]="addForm" (submitEvent)="handleSubmit()">
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Address" formControlName="address" />
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <input matInput placeholder="Tel" type="tel" formControlName="tel" />
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
+      <input
+        matInput
+        placeholder="ApplicationDate"
+        [matDatepicker]="applicationDatepicker"
+        formControlName="applicationDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="applicationDatepicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #applicationDatepicker></mat-datepicker>
+    </mat-form-field>
   </app-content-add-form>
 </section>

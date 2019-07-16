@@ -4,8 +4,7 @@ import {
   FormControl,
   FormGroupDirective,
   NgForm,
-  Validators,
-  FormGroup
+  Validators
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { UserService, User } from '@app/services/user.service';
@@ -44,7 +43,7 @@ export class UserAddComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleSubmit(fb: FormGroup) {
+  handleSubmit() {
     const vals: User = this.formGroup.value;
     this.userService
       .addUser(vals)

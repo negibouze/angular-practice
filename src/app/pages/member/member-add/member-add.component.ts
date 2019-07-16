@@ -4,8 +4,7 @@ import {
   FormControl,
   FormGroupDirective,
   NgForm,
-  Validators,
-  FormGroup
+  Validators
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { MemberService, Member } from '@app/services/member.service';
@@ -37,7 +36,6 @@ export class MemberAddComponent implements OnInit {
     weight: ['']
   });
   selectedValue: string;
-  selectedCar: string;
 
   ages = Array.from(Array(30).keys())
     .map(v => {
@@ -52,7 +50,7 @@ export class MemberAddComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleSubmit(fb: FormGroup) {
+  handleSubmit() {
     const vals: Member = this.addForm.value;
     this.memberService.addMember(vals).subscribe();
   }

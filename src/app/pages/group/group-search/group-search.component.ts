@@ -26,7 +26,7 @@ export class GroupSearchComponent implements OnInit {
   displayedColumns: string[];
   data: Group[];
 
-  constructor(private groupService: GroupService, private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private groupService: GroupService) {}
 
   ngOnInit() {}
 
