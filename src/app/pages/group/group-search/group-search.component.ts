@@ -9,6 +9,7 @@ import { GroupService, Group } from '@app/services/group.service';
 })
 export class GroupSearchComponent implements OnInit {
   formItems = [
+    { key: 'companyName', label: 'CompanyName', controlConfig: [''] },
     { key: 'name', label: 'Name', controlConfig: [''] },
     { key: 'email', label: 'E-mail', controlConfig: ['', Validators.email] },
     { key: 'tel', label: 'Tel', controlConfig: [''] }

@@ -6,10 +6,15 @@
   </app-content-header>
   <app-content-add-form [formGroup]="addForm" (submitEvent)="handleSubmit()">
     <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="Name" formControlName="name" />
+      <mat-label>Company Name</mat-label>
+      <mat-select name="companyName" formControlName="companyName">
+        <mat-option *ngFor="let company of companies" [value]="company.value">
+          {{ company.label }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="add-form-item__input">
-      <input matInput placeholder="CompanyName" formControlName="companyName" />
+      <input matInput placeholder="Name" formControlName="name" />
     </mat-form-field>
     <mat-form-field class="add-form-item__input">
       <input

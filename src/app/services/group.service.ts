@@ -4,8 +4,8 @@ import { ApiService } from './api.service';
 
 export interface Group {
   id: number;
-  name: string;
   companyName: string;
+  name: string;
   representativeName: string;
 }
 

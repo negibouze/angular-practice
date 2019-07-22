@@ -24,6 +24,12 @@ export class CompanyAddComponent implements OnInit {
 
   handleSubmit() {
     const vals: Company = this.addForm.value;
-    this.companyService.addCompany(vals).subscribe();
+    this.companyService
+      .addCompany(vals)
+      .subscribe(
+        value => this.addForm.reset(),
+        error => console.log(`onError: ${error}`),
+        () => console.log('onCompleted')
+      );
   }
 }

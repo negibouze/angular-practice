@@ -6,11 +6,19 @@
   </app-content-header>
   <app-content-add-form [formGroup]="addForm" (submitEvent)="handleSubmit()">
     <mat-form-field class="add-form-item__input">
+      <mat-label>Group Name</mat-label>
+      <mat-select name="groupName" formControlName="groupName">
+        <mat-option *ngFor="let group of groups" [value]="group.value">
+          {{ group.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="add-form-item__input">
       <input matInput placeholder="Name" formControlName="name" />
     </mat-form-field>
     <mat-form-field class="add-form-item__input">
       <mat-label>Age</mat-label>
-      <mat-select [(ngModel)]="selectedValue" name="age" formControlName="age">
+      <mat-select name="age" formControlName="age">
         <mat-option *ngFor="let age of ages" [value]="age.value">
           {{ age.label }}
         </mat-option>

@@ -9,6 +9,7 @@ import { MemberService, Member } from '@app/services/member.service';
 })
 export class MemberSearchComponent implements OnInit {
   formItems = [
+    { key: 'groupName', label: 'GroupName', controlConfig: [''] },
     { key: 'name', label: 'Name', controlConfig: [''] },
     { key: 'age', label: 'Age', controlConfig: [''] },
     { key: 'height', label: 'Height', controlConfig: [''] },
