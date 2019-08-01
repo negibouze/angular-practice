@@ -65,16 +65,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{md,html}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "npm run lint",
-      "git add"
-    ]
   }
 }
